@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 450" width="100%" height="100%">
+  <defs>
+    <radialGradient id="foyerAtmosphere" cx="50%" cy="40%" r="55%">
+      <stop offset="0%" stop-color="#221C2B" stop-opacity="0.95"/>
+      <stop offset="50%" stop-color="#14111B" stop-opacity="0.98"/>
+      <stop offset="100%" stop-color="#08070B" stop-opacity="1"/>
+    </radialGradient>
+    <radialGradient id="candleSpotlight" cx="50%" cy="42%" r="48%">
+      <stop offset="0%" stop-color="#D4AF37" stop-opacity="0.22"/>
+      <stop offset="45%" stop-color="#7A0F1F" stop-opacity="0.08"/>
+      <stop offset="100%" stop-color="#08070B" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="gildedGold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#DFBD52"/>
+      <stop offset="25%" stop-color="#8C6E2D"/>
+      <stop offset="50%" stop-color="#ECCF71"/>
+      <stop offset="75%" stop-color="#9E7D33"/>
+      <stop offset="100%" stop-color="#644E1C"/>
+    </linearGradient>
+    <linearGradient id="canvasShade" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1D1924"/>
+      <stop offset="100%" stop-color="#0F0D14"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Gallery Wall Background -->
+  <rect width="100%" height="100%" fill="url(#foyerAtmosphere)"/>
+
+  <!-- Warm Candle Spotlight -->
+  <circle cx="300" cy="210" r="190" fill="url(#candleSpotlight)"/>
+
+  <!-- Shadow Behind Frame -->
+  <rect x="180" y="55" width="240" height="310" rx="4" fill="#040306" opacity="0.85" filter="blur(10px)"/>
+
+  <!-- Outer Gilded Frame Moulding -->
+  <rect x="185" y="60" width="230" height="300" rx="3" fill="none" stroke="url(#gildedGold)" stroke-width="7"/>
+  <!-- Inner Frame Liner / Fillet -->
+  <rect x="194" y="69" width="212" height="282" rx="1" fill="none" stroke="#D4AF37" stroke-width="1.2" opacity="0.65"/>
+  <!-- Velvet Bevel -->
+  <rect x="198" y="73" width="204" height="274" fill="url(#canvasShade)"/>
+
+  <!-- Inner Canvas Artwork -->
+  <!-- Subtle Classical Silhouette Composition -->
+  <ellipse cx="300" cy="180" rx="42" ry="52" fill="#241E2D" opacity="0.85"/>
+  <circle cx="300" cy="155" r="26" fill="#F2ECE1" opacity="0.12"/>
+  <path d="M 262 235 C 262 205, 338 205, 338 235 L 348 280 L 252 280 Z" fill="#F2ECE1" opacity="0.08"/>
+
+  <!-- Frame Corner Ornament Accents -->
+  <!-- Top-left -->
+  <path d="M 188 63 L 202 63 L 188 77 Z" fill="#D4AF37" opacity="0.6"/>
+  <!-- Top-right -->
+  <path d="M 412 63 L 398 63 L 412 77 Z" fill="#D4AF37" opacity="0.6"/>
+  <!-- Bottom-left -->
+  <path d="M 188 357 L 202 357 L 188 343 Z" fill="#D4AF37" opacity="0.6"/>
+  <!-- Bottom-right -->
+  <path d="M 412 357 L 398 357 L 412 343 Z" fill="#D4AF37" opacity="0.6"/>
+
+  <!-- Framing Cord -->
+  <path d="M 300 32 L 230 60 M 300 32 L 370 60" stroke="#8C6E2D" stroke-width="1.5" opacity="0.6"/>
+  <circle cx="300" cy="32" r="3" fill="#D4AF37"/>
+</svg>

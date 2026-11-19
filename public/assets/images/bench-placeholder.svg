@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 450" width="100%" height="100%">
+  <defs>
+    <radialGradient id="mistGlow" cx="50%" cy="35%" r="60%">
+      <stop offset="0%" stop-color="#2D2838" stop-opacity="0.9"/>
+      <stop offset="60%" stop-color="#14121A" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#0B0A0F" stop-opacity="1"/>
+    </radialGradient>
+    <radialGradient id="moonGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#F2ECE1" stop-opacity="0.25"/>
+      <stop offset="50%" stop-color="#D4AF37" stop-opacity="0.08"/>
+      <stop offset="100%" stop-color="#0B0A0F" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="benchWood" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#4A3B2C"/>
+      <stop offset="50%" stop-color="#8C7352"/>
+      <stop offset="100%" stop-color="#4A3B2C"/>
+    </linearGradient>
+    <linearGradient id="ironWork" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#D4AF37" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#3A3022" stop-opacity="0.8"/>
+    </linearGradient>
+    <filter id="softGlow">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+  </defs>
+
+  <!-- Background Nocturnal Atmosphere -->
+  <rect width="100%" height="100%" fill="url(#mistGlow)"/>
+
+  <!-- Distant Cypress / Willow Silhouettes -->
+  <path d="M 0 340 Q 60 280, 110 350 T 220 340 T 360 360 T 500 330 T 600 350 L 600 450 L 0 450 Z" fill="#0E0C12" opacity="0.8"/>
+  <path d="M 80 180 C 70 240, 50 300, 30 360 M 75 220 C 50 260, 40 320, 30 360" stroke="#1A1722" stroke-width="3" fill="none" opacity="0.6"/>
+  <path d="M 520 160 C 530 230, 550 290, 570 360 M 525 210 C 545 250, 560 310, 570 360" stroke="#1A1722" stroke-width="3" fill="none" opacity="0.6"/>
+
+  <!-- Moon Glow above Bench -->
+  <circle cx="300" cy="180" r="160" fill="url(#moonGlow)"/>
+
+  <!-- Ornamental Victorian Cast-Iron Bench -->
+  <!-- Shadow on stone -->
+  <ellipse cx="300" cy="385" rx="190" ry="14" fill="#07060A" opacity="0.85"/>
+
+  <!-- Bench Backrest Iron Flourishes -->
+  <path d="M 160 250 C 180 200, 240 200, 260 250 C 280 200, 340 200, 360 250 C 380 200, 420 200, 440 250" fill="none" stroke="url(#ironWork)" stroke-width="2.5"/>
+  <circle cx="210" cy="225" r="14" fill="none" stroke="#D4AF37" stroke-width="1.5" opacity="0.4"/>
+  <circle cx="310" cy="225" r="14" fill="none" stroke="#D4AF37" stroke-width="1.5" opacity="0.4"/>
+  <circle cx="390" cy="225" r="14" fill="none" stroke="#D4AF37" stroke-width="1.5" opacity="0.4"/>
+
+  <!-- Bench Slats (Dark polished wood) -->
+  <rect x="145" y="260" width="310" height="7" rx="3.5" fill="url(#benchWood)" opacity="0.85"/>
+  <rect x="145" y="274" width="310" height="7" rx="3.5" fill="url(#benchWood)" opacity="0.85"/>
+  <rect x="145" y="288" width="310" height="7" rx="3.5" fill="url(#benchWood)" opacity="0.85"/>
+
+  <!-- Bench Seat Slats -->
+  <rect x="135" y="310" width="330" height="9" rx="4" fill="url(#benchWood)"/>
+  <rect x="138" y="324" width="324" height="8" rx="4" fill="url(#benchWood)" opacity="0.9"/>
+  <rect x="142" y="336" width="316" height="7" rx="3.5" fill="url(#benchWood)" opacity="0.75"/>
+
+  <!-- Bench Iron Legs & Armrests -->
+  <path d="M 150 250 C 130 280, 130 310, 135 340 C 130 365, 140 385, 155 388" fill="none" stroke="url(#ironWork)" stroke-width="4" stroke-linecap="round"/>
+  <path d="M 450 250 C 470 280, 470 310, 465 340 C 470 365, 460 385, 445 388" fill="none" stroke="url(#ironWork)" stroke-width="4" stroke-linecap="round"/>
+  <path d="M 300 330 L 300 385" stroke="url(#ironWork)" stroke-width="3.5" stroke-linecap="round"/>
+
+  <!-- Atmospheric mist line -->
+  <path d="M 0 380 Q 150 365, 300 375 T 600 370" stroke="#F2ECE1" stroke-width="1.5" fill="none" opacity="0.12"/>
+  <path d="M 0 395 Q 200 405, 400 390 T 600 400" stroke="#D4AF37" stroke-width="1" fill="none" opacity="0.1"/>
+</svg>
