@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from "react";
+import React, { useEffect, useState, useCallback, useRef } from "react";
 import { siteContent } from "../../content/siteContent";
 import { FlyingBats } from "../effects/FlyingBats";
 import { VampireGuide } from "../ui/VampireGuide";
@@ -26,6 +26,17 @@ export const BiteScene: React.FC<BiteSceneProps> = ({ onBiteComplete, triggerRed
   const { playClipQueue, playSfx, registerInteraction } = useAudio();
   const [caption, setCaption] = useState(BITE_CLIPS[0].text);
   const [fangStage, setFangStage] = useState<"idle" | "approaching" | "biting">("idle");
+  const hasTriggeredTransitionRef = useRef(false);
+  const onBiteCompleteRef = useRef(onBiteComplete);
+  const triggerRedFlashRef = useRef(triggerRedFlash);
+
+  useEffect(() => {
+    onBiteCompleteRef.current = onBiteComplete;
+  }, [onBiteComplete]);
+
+  useEffect(() => {
+    triggerRedFlashRef.current = triggerRedFlash;
+  }, [triggerRedFlash]);
 
   const startPlayback = useCallback(() => {
     let sfxAudio: HTMLAudioElement | null = null;
@@ -43,15 +54,16 @@ export const BiteScene: React.FC<BiteSceneProps> = ({ onBiteComplete, triggerRed
       },
       (finishedIdx) => {
         // When 2nd line finishes (via audio onended, or fallback timer if muted/blocked)
-        if (finishedIdx === 1) {
+        if (finishedIdx === 1 && !hasTriggeredTransitionRef.current) {
+          hasTriggeredTransitionRef.current = true;
           setFangStage("biting");
           sfxAudio = playSfx("vampire-bite-scream.mp3");
 
           // 500ms bite impact before crimson flash & blackout
           flashTimer = setTimeout(() => {
-            triggerRedFlash();
+            triggerRedFlashRef.current();
             completeTimer = setTimeout(() => {
-              onBiteComplete();
+              onBiteCompleteRef.current();
             }, bite.timings.flashDurationMs || 400);
           }, 500);
         }
@@ -67,7 +79,7 @@ export const BiteScene: React.FC<BiteSceneProps> = ({ onBiteComplete, triggerRed
       if (flashTimer) clearTimeout(flashTimer);
       if (completeTimer) clearTimeout(completeTimer);
     };
-  }, [playClipQueue, playSfx, triggerRedFlash, onBiteComplete, bite.timings.flashDurationMs]);
+  }, [playClipQueue, playSfx, bite.timings.flashDurationMs]);
 
   useEffect(() => {
     const cancelAudio = startPlayback();
@@ -76,6 +88,7 @@ export const BiteScene: React.FC<BiteSceneProps> = ({ onBiteComplete, triggerRed
 
   const handleReplay = () => {
     registerInteraction();
+    hasTriggeredTransitionRef.current = false;
     startPlayback();
   };
 

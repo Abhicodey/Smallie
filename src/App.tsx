@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useCallback } from "react";
 import gsap from "gsap";
 import { SoundToggle } from "./components/ui/SoundToggle";
 import { AudioProvider } from "./context/AudioContext";
@@ -26,7 +26,7 @@ export const App: React.FC = () => {
   const [isRedFlashActive, setIsRedFlashActive] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
-  const goToScene = (nextIndex: number) => {
+  const goToScene = useCallback((nextIndex: number) => {
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
     if (prefersReducedMotion || !containerRef.current) {
@@ -50,14 +50,26 @@ export const App: React.FC = () => {
         });
       },
     });
-  };
+  }, []);
 
-  const triggerRedFlash = () => {
+  const triggerRedFlash = useCallback(() => {
     setIsRedFlashActive(true);
     setTimeout(() => {
       setIsRedFlashActive(false);
     }, 380);
-  };
+  }, []);
+
+  const handleGoToScene1 = useCallback(() => goToScene(1), [goToScene]);
+  const handleGoToScene2 = useCallback(() => goToScene(2), [goToScene]);
+  const handleGoToScene3 = useCallback(() => goToScene(3), [goToScene]);
+  const handleGoToScene4 = useCallback(() => goToScene(4), [goToScene]);
+  const handleGoToScene5 = useCallback(() => goToScene(5), [goToScene]);
+  const handleGoToScene6 = useCallback(() => goToScene(6), [goToScene]);
+  const handleGoToScene7 = useCallback(() => goToScene(7), [goToScene]);
+  const handleGoToScene8 = useCallback(() => goToScene(8), [goToScene]);
+  const handleGoToScene9 = useCallback(() => goToScene(9), [goToScene]);
+  const handleGoToScene10 = useCallback(() => goToScene(10), [goToScene]);
+  const handleGoToScene0 = useCallback(() => goToScene(0), [goToScene]);
 
   const progressPercentage = (currentSceneIndex / (TOTAL_SCENES - 1)) * 100;
 
@@ -105,39 +117,39 @@ export const App: React.FC = () => {
           role="region"
           aria-live="polite"
         >
-          {currentSceneIndex === 0 && <GateScene onEnter={() => goToScene(1)} />}
+          {currentSceneIndex === 0 && <GateScene onEnter={handleGoToScene1} />}
           {currentSceneIndex === 1 && (
-            <ApproachScene onStepForward={() => goToScene(2)} />
+            <ApproachScene onStepForward={handleGoToScene2} />
           )}
           {currentSceneIndex === 2 && (
             <BiteScene
-              onBiteComplete={() => goToScene(3)}
+              onBiteComplete={handleGoToScene3}
               triggerRedFlash={triggerRedFlash}
             />
           )}
           {currentSceneIndex === 3 && (
-            <BlackoutScene onBlackoutComplete={() => goToScene(4)} />
+            <BlackoutScene onBlackoutComplete={handleGoToScene4} />
           )}
           {currentSceneIndex === 4 && (
-            <BirthdayWishScene onContinue={() => goToScene(5)} />
+            <BirthdayWishScene onContinue={handleGoToScene5} />
           )}
           {currentSceneIndex === 5 && (
-            <BenchScene onContinue={() => goToScene(6)} />
+            <BenchScene onContinue={handleGoToScene6} />
           )}
           {currentSceneIndex === 6 && (
-            <FoyerScene onContinue={() => goToScene(7)} />
+            <FoyerScene onContinue={handleGoToScene7} />
           )}
           {currentSceneIndex === 7 && (
-            <MusicRoomScene onContinue={() => goToScene(8)} />
+            <MusicRoomScene onContinue={handleGoToScene8} />
           )}
           {currentSceneIndex === 8 && (
-            <BalconyScene onContinue={() => goToScene(9)} />
+            <BalconyScene onContinue={handleGoToScene9} />
           )}
           {currentSceneIndex === 9 && (
-            <LetterScene onContinue={() => goToScene(10)} />
+            <LetterScene onContinue={handleGoToScene10} />
           )}
           {currentSceneIndex === 10 && (
-            <EndingScene onReplay={() => goToScene(0)} />
+            <EndingScene onReplay={handleGoToScene0} />
           )}
         </main>
       </div>
